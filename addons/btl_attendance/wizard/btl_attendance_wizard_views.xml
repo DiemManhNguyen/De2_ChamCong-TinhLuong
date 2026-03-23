@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_btl_attendance_wizard_form" model="ir.ui.view">
+        <field name="name">btl.attendance.wizard.form</field>
+        <field name="model">btl.attendance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Chốt công và Tạo lương">
+                <group>
+                    <group>
+                        <field name="month"/>
+                        <field name="year"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Danh sách Nhân viên">
+                        <field name="employee_ids" widget="many2many_tags"/>
+                    </page>
+                </notebook>
+                <footer>
+                    <button name="action_generate_payroll" string="Tạo Phiếu Lương" type="object" class="btn-primary"/>
+                    <button string="Hủy" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_btl_attendance_wizard" model="ir.actions.act_window">
+        <field name="name">Chốt công &amp; Tạo lương</field>
+        <field name="res_model">btl.attendance.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

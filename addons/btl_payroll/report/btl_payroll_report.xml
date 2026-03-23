@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_btl_payslip" model="ir.actions.report">
+        <field name="name">In Phiếu lương (BTL)</field>
+        <field name="model">btl.payroll</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">btl_payroll.report_payslip_template</field>
+        <field name="report_file">btl_payroll.report_payslip_template</field>
+        <field name="print_report_name">'Phieu_luong_%s_T%s' % (object.employee_id.name, object.month)</field>
+        <field name="binding_model_id" ref="model_btl_payroll"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

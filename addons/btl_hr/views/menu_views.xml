@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Trạm ROOT cho toàn bộ hệ thống BTL (ERP Unification) -->
+    <menuitem id="menu_btl_erp_root"
+              name="BTL ERP"
+              sequence="1"/>
+
+    <!-- Module Nhân sự -->
+    <menuitem id="menu_btl_hr_root"
+              name="Nhân sự"
+              parent="menu_btl_erp_root"
+              sequence="10"/>
+
+    <menuitem id="menu_btl_hr_employee"
+              name="Danh sách Nhân viên"
+              parent="menu_btl_hr_root"
+              action="action_btl_hr_employee"
+              sequence="10"/>
+
+    <menuitem id="menu_btl_hr_department"
+              name="Phòng ban"
+              parent="menu_btl_hr_root"
+              action="hr.hr_department_kanban_action"
+              sequence="15"/>
+
+    <menuitem id="menu_btl_hr_job"
+              name="Vị trí công việc"
+              parent="menu_btl_hr_root"
+              action="hr.action_hr_job"
+              sequence="16"/>
+
+    <menuitem id="menu_btl_hr_contract"
+              name="Hợp đồng lao động"
+              parent="menu_btl_hr_root"
+              action="action_btl_hr_contract"
+              sequence="20"/>
+
+</odoo>

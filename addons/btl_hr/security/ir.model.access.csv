@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_user,btl_hr.employee.user,hr.model_hr_employee,btl_hr.group_btl_hr_user,1,0,0,0
+access_hr_family_user,btl_hr.family.user,model_hr_family,btl_hr.group_btl_hr_user,1,0,0,0
+access_hr_family_manager,btl_hr.family.manager,model_hr_family,btl_hr.group_btl_hr_manager,1,1,1,1

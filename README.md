@@ -98,6 +98,16 @@ Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ đ
 
 © 2024 AIoTLab, Faculty of Information Technology, DaiNam University. All rights reserved.
 
+
 ---
 
-    
+## 🚀 Dự án Chấm công & Tính lương (Đề số 2)
+
+Dự án này tập trung vào việc chuyển đổi các module từ khóa K15 thành một hệ thống ERP thống nhất tích hợp Nhân sự, Chấm công và Lương. 
+
+- **Business Flow**: Luồng nghiệp vụ mô tả từ khâu tuyển dụng, ký hợp đồng tại `btl_hr`, đăng ký ca làm tại `btl_attendance`, chấm công thực tế hàng ngày cho đến khi tổng hợp và tính lương tự động tại `btl_payroll`.
+- **Luồng dữ liệu**: `btl_hr` (Dữ liệu gốc) -> `btl_attendance` (Dữ liệu công) -> `btl_payroll` (Dữ liệu tiền lương).
+
+Xem chi tiết sơ đồ nghiệp vụ tại: [docs/business_flow/Nhom02_BusinessFlow_ChamCongTinhLuong.png](docs/business_flow/Nhom02_BusinessFlow_ChamCongTinhLuong.png)
+
+*Người thực hiện: Nhóm 02 - Antigravity AI*

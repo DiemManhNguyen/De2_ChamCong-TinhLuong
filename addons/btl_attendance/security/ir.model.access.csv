@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_btl_attendance_user,btl.attendance.user,model_btl_attendance,btl_hr.group_btl_hr_user,1,1,1,0
+access_btl_attendance_manager,btl.attendance.manager,model_btl_attendance,btl_hr.group_btl_hr_manager,1,1,1,1
+access_btl_leave_user,btl.leave.user,model_btl_leave,btl_hr.group_btl_hr_user,1,1,1,0
+access_btl_leave_manager,btl.leave.manager,model_btl_leave,btl_hr.group_btl_hr_manager,1,1,1,1

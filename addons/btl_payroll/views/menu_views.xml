@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_btl_payroll_root"
+              name="Tiền lương"
+              parent="btl_hr.menu_btl_erp_root"
+              sequence="30"/>
+
+    <menuitem id="menu_btl_payroll_sheet"
+              name="Bảng lương tháng"
+              parent="menu_btl_payroll_root"
+              action="action_btl_payroll"
+              sequence="10"/>
+
+</odoo>

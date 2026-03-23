@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_btl_leave_tree" model="ir.ui.view">
+        <field name="name">btl.leave.tree</field>
+        <field name="model">btl.leave</field>
+        <field name="arch" type="xml">
+            <tree string="Danh sách Đơn từ">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="apply_date"/>
+                <field name="leave_type"/>
+                <field name="state" widget="badge" decoration-success="state == 'approve'" decoration-info="state == 'confirm'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_btl_leave_form" model="ir.ui.view">
+        <field name="name">btl.leave.form</field>
+        <field name="model">btl.leave</field>
+        <field name="arch" type="xml">
+            <form string="Đơn từ">
+                <header>
+                    <button name="action_confirm" string="Xác nhận" type="object" states="draft" class="btn-primary"/>
+                    <button name="action_approve" string="Duyệt" type="object" states="confirm" class="btn-success" groups="btl_hr.group_btl_hr_manager"/>
+                    <button name="action_refuse" string="Từ chối" type="object" states="confirm" class="btn-danger" groups="btl_hr.group_btl_hr_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="apply_date"/>
+                        <field name="leave_type"/>
+                        <field name="reason"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_btl_leave" model="ir.actions.act_window">
+        <field name="name">Đơn từ &amp; Giải trình</field>
+        <field name="res_model">btl.leave</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

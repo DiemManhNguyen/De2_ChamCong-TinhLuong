@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_btl_attendance_root"
+              name="Chấm công"
+              parent="btl_hr.menu_btl_erp_root"
+              sequence="20"/>
+
+    <menuitem id="menu_btl_attendance_log"
+              name="Bảng chấm công"
+              parent="menu_btl_attendance_root"
+              action="action_btl_attendance"
+              sequence="10"/>
+
+    <menuitem id="menu_btl_attendance_wizard"
+              name="Chốt công &amp; Tạo lương"
+              parent="menu_btl_attendance_root"
+              action="action_btl_attendance_wizard"
+              sequence="15"
+              groups="btl_hr.group_btl_hr_manager"/>
+
+    <menuitem id="menu_btl_leave"
+              name="Đơn từ &amp; Giải trình"
+              parent="menu_btl_attendance_root"
+              action="action_btl_leave"
+              sequence="20"/>
+
+</odoo>

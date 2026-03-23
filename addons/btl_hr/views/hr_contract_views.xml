@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='salary']" position="after">
+                <group string="Phụ cấp dự kiến (BTL ERP)" name="btl_allowances">
+                    <field name="phu_cap_an_trua"/>
+                    <field name="phu_cap_xang_xe"/>
+                    <field name="phu_cap_dien_thoai"/>
+                    <field name="tong_thu_nhap_du_kien" class="oe_subtotal_footer_separator"/>
+                </group>
+                <group string="Bảo hiểm &amp; Thuế TNCN (BTL ERP)" name="btl_tax_insurance">
+                    <field name="has_insurance"/>
+                    <field name="insurance_base" attrs="{'invisible': [('has_insurance', '=', False)]}"/>
+                    <field name="num_dependents"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_btl_hr_contract" model="ir.actions.act_window">
+        <field name="name">Hợp đồng lao động</field>
+        <field name="res_model">hr.contract</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

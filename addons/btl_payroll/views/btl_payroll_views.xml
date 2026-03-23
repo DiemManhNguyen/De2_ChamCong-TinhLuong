@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_btl_payroll_tree" model="ir.ui.view">
+        <field name="name">btl.payroll.tree</field>
+        <field name="model">btl.payroll</field>
+        <field name="arch" type="xml">
+            <tree string="Bảng lương">
+                <field name="display_name"/>
+                <field name="employee_id"/>
+                <field name="wage"/>
+                <field name="total_work_days"/>
+                <field name="total_late_penalty"/>
+                <field name="net_salary" sum="Total Net Salary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_btl_payroll_form" model="ir.ui.view">
+        <field name="name">btl.payroll.form</field>
+        <field name="model">btl.payroll</field>
+        <field name="arch" type="xml">
+            <form string="Phiếu lương">
+                <header>
+                    <button name="action_generate_ai_evaluation" string="AI Đánh Giá Năng Lực" type="object" class="btn-primary" icon="fa-magic"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Cấu hình">
+                            <field name="employee_id"/>
+                            <field name="month"/>
+                            <field name="year"/>
+                            <field name="contract_id"/>
+                        </group>
+                        <group string="Kết quả tính toán">
+                            <field name="wage"/>
+                            <field name="phu_cap_an_trua"/>
+                            <field name="phu_cap_xang_xe"/>
+                            <field name="phu_cap_dien_thoai"/>
+                            <field name="total_work_days"/>
+                            <field name="total_late_penalty"/>
+                            <field name="bh_deduction" decoration-danger="bh_deduction > 0"/>
+                            <field name="tax_deduction" decoration-danger="tax_deduction > 0"/>
+                            <separator/>
+                            <field name="net_salary" class="oe_subtotal_footer_separator"/>
+                        </group>
+                    </group>
+                    <group string="Đánh giá bằng Trí tuệ Nhân tạo (AI Mức 3)">
+                        <field name="ai_evaluation" nolabel="1" readonly="1" placeholder="Nhấn nút Phân tích AI để tạo đánh giá dựa trên hiệu suất..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_btl_payroll" model="ir.actions.act_window">
+        <field name="name">Bảng lương tháng</field>
+        <field name="res_model">btl.payroll</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

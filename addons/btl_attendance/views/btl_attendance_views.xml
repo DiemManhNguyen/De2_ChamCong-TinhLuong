@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_btl_attendance_tree" model="ir.ui.view">
+        <field name="name">btl.attendance.tree</field>
+        <field name="model">btl.attendance</field>
+        <field name="arch" type="xml">
+            <tree string="Bảng công" decoration-danger="status == 'absent'" decoration-warning="status in ['late', 'early', 'both']">
+                <field name="check_date"/>
+                <field name="employee_id"/>
+                <field name="shift_type"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="minutes_late" decoration-danger="minutes_late > 0"/>
+                <field name="minutes_early" decoration-danger="minutes_early > 0"/>
+                <field name="status" widget="badge" decoration-success="status == 'on_time'" decoration-info="status == 'absent'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_btl_attendance_form" model="ir.ui.view">
+        <field name="name">btl.attendance.form</field>
+        <field name="model">btl.attendance</field>
+        <field name="arch" type="xml">
+            <form string="Chi tiết Chấm công">
+                <sheet>
+                    <group>
+                        <group string="Thông tin chung">
+                            <field name="employee_id"/>
+                            <field name="check_date"/>
+                            <field name="shift_type"/>
+                        </group>
+                        <group string="Thời gian thực tế">
+                            <field name="check_in"/>
+                            <field name="check_out"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Kế hoạch">
+                            <field name="planned_in"/>
+                            <field name="planned_out"/>
+                        </group>
+                        <group string="Kết quả">
+                            <field name="minutes_late"/>
+                            <field name="minutes_early"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_btl_attendance" model="ir.actions.act_window">
+        <field name="name">Bảng chấm công</field>
+        <field name="res_model">btl.attendance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

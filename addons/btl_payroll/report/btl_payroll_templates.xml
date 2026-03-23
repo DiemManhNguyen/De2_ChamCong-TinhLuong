@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payslip_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center">
+                            <h2>PHIẾU LƯƠNG NHÂN VIÊN</h2>
+                            <h4>Tháng <t t-esc="o.month"/> Năm <t t-esc="o.year"/></h4>
+                        </div>
+
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Nhân viên: </strong> <span t-field="o.employee_id.name"/><br/>
+                                <strong>Mã NV: </strong> <span t-field="o.employee_id.ma_dinh_danh"/><br/>
+                                <strong>Phòng ban: </strong> <span t-field="o.employee_id.department_id.name"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>Ngày in: </strong> <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/><br/>
+                                <strong>Hợp đồng: </strong> <span t-field="o.contract_id.name"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Diễn giải</th>
+                                    <th class="text-right">Số lượng/Hệ số</th>
+                                    <th class="text-right">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lương cơ bản (theo hợp đồng)</td>
+                                    <td class="text-right">1.0</td>
+                                    <td class="text-right"><span t-field="o.wage"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Số ngày công thực tế</td>
+                                    <td class="text-right"><span t-field="o.total_work_days"/> / 24</td>
+                                    <td class="text-right">
+                                        <span t-esc="(o.wage / 24 * o.total_work_days)" 
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr t-if="o.phu_cap_an_trua > 0">
+                                    <td>Phụ cấp ăn trưa</td>
+                                    <td class="text-right">-</td>
+                                    <td class="text-right"><span t-field="o.phu_cap_an_trua"/></td>
+                                </tr>
+                                <tr t-if="o.phu_cap_xang_xe > 0">
+                                    <td>Phụ cấp xăng xe</td>
+                                    <td class="text-right">-</td>
+                                    <td class="text-right"><span t-field="o.phu_cap_xang_xe"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><strong>Tổng thu nhập (Gross)</strong></td>
+                                    <td class="text-right">
+                                        <strong>
+                                            <span t-esc="(o.wage / 24 * o.total_work_days) + o.phu_cap_an_trua + o.phu_cap_xang_xe + o.phu_cap_dien_thoai"
+                                                  t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr class="text-danger">
+                                    <td>Khấu trừ đi muộn / về sớm</td>
+                                    <td class="text-right">-</td>
+                                    <td class="text-right">- <span t-field="o.total_late_penalty"/></td>
+                                </tr>
+                                <tr class="text-danger" t-if="o.bh_deduction > 0">
+                                    <td>Bảo hiểm xã hội (10.5%)</td>
+                                    <td class="text-right">Mức đóng: <span t-field="o.insurance_base"/></td>
+                                    <td class="text-right">- <span t-field="o.bh_deduction"/></td>
+                                </tr>
+                                <tr class="text-danger" t-if="o.tax_deduction > 0">
+                                    <td>Thuế TNCN</td>
+                                    <td class="text-right">Phụ thuộc: <span t-field="o.num_dependents"/></td>
+                                    <td class="text-right">- <span t-field="o.tax_deduction"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row justify-content-end">
+                            <div class="col-4">
+                                <table class="table table-sm">
+                                    <tr class="border-black">
+                                        <td><strong>THỰC LĨNH</strong></td>
+                                        <td class="text-right">
+                                            <strong><span t-field="o.net_salary"/></strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mt64 p-5">
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <strong>Người lập biểu</strong><br/>
+                                    <em style="font-size: 0.8em">(Ký, họ tên)</em>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Người nhận lương</strong><br/>
+                                    <em style="font-size: 0.8em">(Ký, họ tên)</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
