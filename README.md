@@ -36,12 +36,8 @@ Platform ERP được áp dụng vào học phần Thực tập doanh nghiệp d
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 </div>
 
-## 🚀 3. Các project đã thực hiện dựa trên Platform
-
-Một số project sinh viên đã thực hiện:
-- #### [Khoá 15](./docs/projects/K15/README.md)
-- #### [Khoá 16](./docs/projects/K16/README.md)
-- #### [Khoá 17](./docs/projects/K17/README.md)
+## 🧪 3. Phát triển bởi AIoTLabs & FIT-DNU
+Dự án được xây dựng và tối ưu hóa bởi Đội ngũ kỹ thuật thuộc **AIoTLab** - Khoa Công nghệ Thông tin, Trường Đại học Đại Nam. Mục tiêu là phát triển giải pháp ERP thông minh, tích hợp các công nghệ hiện đại như **Trí tuệ Nhân tạo (AI)** và **Internet vạn vật (IoT)** vào quản trị doanh nghiệp thực tế.
 ## ⚙️ 4. Cài đặt
 
 ### 4.1. Cài đặt công cụ, môi trường và các thư viện cần thiết
@@ -103,10 +99,11 @@ Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ đ
 
 ## 🚀 Dự án Chấm công & Tính lương (Đề số 2)
 
-Dự án này tập trung vào việc chuyển đổi các module từ khóa K15 thành một hệ thống ERP thống nhất tích hợp Nhân sự, Chấm công và Lương. 
+Dự án này tập trung vào việc chuyển đổi các module từ khóa K15 thành một hệ thống ERP thống nhất tích hợp Nhân sự, Chấm công và Lương, có tích hợp **Trí tuệ Nhân tạo (Gemini AI)**. 
 
 - **Business Flow**: Luồng nghiệp vụ mô tả từ khâu tuyển dụng, ký hợp đồng tại `btl_hr`, đăng ký ca làm tại `btl_attendance`, chấm công thực tế hàng ngày cho đến khi tổng hợp và tính lương tự động tại `btl_payroll`.
-- **Luồng dữ liệu**: `btl_hr` (Dữ liệu gốc) -> `btl_attendance` (Dữ liệu công) -> `btl_payroll` (Dữ liệu tiền lương).
+- **Tính năng AI**: Tích hợp **Google Gemini Pro** để tự động phân tích hiệu suất làm việc, kỷ luật và đề xuất khen thưởng dựa trên dữ liệu thật của nhân viên.
+- **Luồng dữ liệu**: `btl_hr` (Dữ liệu gốc) -> `btl_attendance` (Dữ liệu công) -> `btl_payroll` (Dữ liệu tiền lương + Gemini AI).
 
 Xem chi tiết sơ đồ nghiệp vụ tại: [docs/business_flow/Nhom02_BusinessFlow_ChamCongTinhLuong.png](docs/business_flow/Nhom02_BusinessFlow_ChamCongTinhLuong.png)
 
